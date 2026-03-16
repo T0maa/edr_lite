@@ -207,95 +207,6 @@ void close_storage(storage_t *storage)
     sqlite3_close(storage->db);
     storage->db = NULL;
 }
-/*
-static void display_logs(const event_t *evt, storage_t *storage)
-{
-    switch (evt->type)
-    {
-    case EDR_EVENT_EXEC:
-        printf("EXEC_VE\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("filename %s\n\n", evt->data.exec.filename);
-        break;
-    
-    case EDR_EVENT_CONNECT: {
-        uint32_t ip = evt->data.connect.dst_ip;
-        printf("CONNECT\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("dst %u.%u.%u.%u:%u\n\n",
-            ip & 0xFF,
-            (ip >> 8) & 0xFF,
-            (ip >> 16) & 0xFF,
-            (ip >> 24) & 0xFF,
-            evt->data.connect.dst_port);
-        break;
-    }
-    
-    case EDR_EVENT_OPENAT_ENTER: {
-        printf("OPENAT enter\npid %u, tid %u uid %u, ppid %u, comm %s\n", evt->pid, evt->tid, evt->uid, evt->ppid, evt->comm);
-        printf("filename %s, flags %d\n\n", evt->data.openat.filename, evt->data.openat.flags);
-        break;
-    }
-
-    case EDR_EVENT_OPENAT_EXIT: {
-        printf("OPENAT exit\npid %u, tid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->tid, evt->uid, evt->ppid, evt->comm);
-        printf("fd %d, ret %d\n\n", evt->data.openat.fd, evt->data.openat.ret);
-        break;
-    }
-
-    case EDR_EVENT_WRITE: {
-        const char *path = tracker_get_fd_path(storage->tracker, evt->pid, evt->data.write.fd);
-    
-        printf("WRITE\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("fd %u, count %lu, path %s\n\n", evt->data.write.fd, evt->data.write.count, path);
-        break;
-    }
-
-    case EDR_EVENT_UNLINKAT: {
-        printf("UNLINKAT\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("filename %s, flags %d\n\n", evt->data.unlinkat.filename, evt->data.unlinkat.flags);
-        break;
-    }
-
-    case EDR_EVENT_RENAMEAT2: {
-        printf("RENAMEAT2\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("old_filename %s, new_filename %s, flags %d\n\n", evt->data.renameat2.old_filename, evt->data.renameat2.new_filename, evt->data.renameat2.flags);
-        break;
-    }
-
-    case EDR_EVENT_BIND: {
-        uint32_t ip = evt->data.bind.addr;
-        printf("BIND\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("fd %u, addr %u.%u.%u.%u:%u, family %u\n\n",
-            evt->data.bind.fd,
-            ip & 0xFF,
-            (ip >> 8) & 0xFF,
-            (ip >> 16) & 0xFF,
-            (ip >> 24) & 0xFF,
-            evt->data.bind.port,
-            evt->data.bind.family);
-        break;
-    }
-
-    case EDR_EVENT_LISTEN:
-        printf("LISTEN\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("fd %u, backlog %u\n\n", evt->data.listen.fd, evt->data.listen.backlog);
-        break;
-
-    case EDR_EVENT_ACCEPT:
-        printf("ACCEPT\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("fd %u\n\n", evt->data.accept.fd);
-        break;
-
-    case EDR_EVENT_READ:
-        const char *path = tracker_get_fd_path(storage->tracker, evt->pid, evt->data.read.fd);
-
-        printf("READ\npid %u, uid %u, ppid %u, comm %s\n", evt->pid, evt->uid, evt->ppid, evt->comm);
-        printf("fd %u, count %lu, path %s\n\n", evt->data.read.fd, evt->data.read.count, path);
-        break;
-    default:
-        break;
-    }
-    fflush(stdout);
-}*/
 
 int handle_event(void *ctx, void *data, size_t data_size)
 {
@@ -309,6 +220,5 @@ int handle_event(void *ctx, void *data, size_t data_size)
         return 0;
     if (storage_insert_event(evt, storage) == 84)
         return 0;
-    //display_logs(evt, storage);
     return 0;
 }

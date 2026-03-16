@@ -17,7 +17,16 @@ static void print_error(const char *msg)
     (void)r;
 }
 
-int main(void)
+static int check_args(int argc, const char **argv)
+{
+    (void)argv;
+
+    if (argc > 1)
+        return 84;
+    return 0;
+}
+
+int main(int argc, char **argv)
 {
     struct bpf_object *obj = NULL;
     struct bpf_program *prog = NULL;
@@ -31,6 +40,9 @@ int main(void)
 
     signal(SIGINT, on_signal);
     signal(SIGTERM, on_signal);
+
+    if (check_args(argc, argv) == 84)
+        return 84;
 
     if (init_storage(&storage) == 84) {
         print_error("Unsuccessfull creation of storage\n");
