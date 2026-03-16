@@ -5,10 +5,7 @@
 #include <bpf/bpf_core_read.h>
 #include <bpf/bpf_endian.h>
 
-/*FICHIER QUI VA ETRE INTERPRETE NIVEAU KERNEL */
-
-char LICENSE[] SEC("license") = "GPL"; /*DECLARATION DE LA LICENSE AFIN QUE LES FONCTIONS SOIENT ACCEPTEES NIVEAU KERNEL*/
-
+char LICENSE[] SEC("license") = "GPL";
 
 struct {
     __uint(type, BPF_MAP_TYPE_RINGBUF);
