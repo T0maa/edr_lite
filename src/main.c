@@ -17,7 +17,7 @@ static void print_error(const char *msg)
     (void)r;
 }
 
-static int check_args(int argc, const char **argv)
+static int check_args(int argc, char **argv)
 {
     (void)argv;
 
