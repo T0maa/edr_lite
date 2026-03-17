@@ -47,6 +47,7 @@ libelf-dev
 sqlite3
 libsqlite3-dev
 build-essential
+bpftool
 
 Other distributions require equivalent packages.
 
