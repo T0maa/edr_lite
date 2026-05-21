@@ -21,7 +21,7 @@ This project is intended as an **educational** and **technical demonstration** o
 ---
 
 ## Requirements
-
+```
 Linux kernel 5.8 or newer
 Clang
 LLVM
@@ -29,6 +29,7 @@ libbpf
 SQLite3
 GCC or Clang compiler
 Root privileges
+```
 
 **A recent Linux distribution such as Ubuntu, Debian, Fedora, or Arch Linux is recommended.**
 
