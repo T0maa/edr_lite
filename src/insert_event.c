@@ -24,7 +24,7 @@ static const char *event_type_to_str(u32 type)
         return "accept";
     if (type == EDR_EVENT_READ)
         return "read";
-    return "type";
+    return "unknown";
 }
 
 int insert_base_event(storage_t *storage, const event_t *evt, sqlite3_int64 *event_id)

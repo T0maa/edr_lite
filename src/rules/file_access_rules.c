@@ -20,7 +20,6 @@ static int rule_read_passwd(sqlite3 *db, sqlite3_int64 *seen_id)
         "JOIN events e2 ON e2.id = r2.event_id "
         "WHERE r2.path = r.path "
         "AND e2.pid = e.pid "
-        "AND e2.pid = e.pid "
         "AND e2.ts_ns < e.ts_ns "
         "AND e.ts_ns - e2.ts_ns < 5000000000) "
         "ORDER BY e.id ASC;";

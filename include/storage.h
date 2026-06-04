@@ -3,13 +3,9 @@
 
     #include "edr_event.h"
     #include <stdio.h>
-    #include <unistd.h>
-    #include <signal.h>
-    #include <errno.h>
     #include <bpf/libbpf.h>
     #include <bpf/bpf.h>
     #include <sqlite3.h>
-    #include "../include/edr_event.h"
     #include "../include/tracker.h"
 
 typedef struct storage_s {
@@ -38,5 +34,7 @@ int insert_accept_event(storage_t *storage, sqlite3_int64 event_id, const event_
 int insert_read_event(storage_t *storage, sqlite3_int64 event_id, const event_t *evt);
 
 int sort_store_event(const event_t *evt);
+
+extern tracker_t tracker;
 
 #endif /*STORAGE_H*/

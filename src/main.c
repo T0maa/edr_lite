@@ -2,6 +2,9 @@
 #include "../include/tracker.h"
 #include "../include/rules.h"
 #include <time.h>
+#include <unistd.h>
+#include <signal.h>
+#include <errno.h>
 
 volatile sig_atomic_t g_stop = 0;
 
@@ -54,7 +57,6 @@ int main(int argc, char **argv)
         return 84;
     }
 
-    extern tracker_t tracker;
     storage.tracker = &tracker;
 
     obj = bpf_object__open_file("edr_bpf.bpf.o", NULL);

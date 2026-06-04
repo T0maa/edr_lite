@@ -1,5 +1,6 @@
 #include "../include/storage.h"
 #include "../include/tracker.h"
+#include <arpa/inet.h>
 
 static pid_slot_t pending_slots[TRACKER_PENDING_CAPACITY];
 static fd_path_slot_t fd_slots[TRACKER_FD_CAPACITY];
@@ -83,7 +84,7 @@ int sort_store_event(const event_t *evt)
         return 0;
 
     if (evt->type == EDR_EVENT_CONNECT) {
-        if (evt->data.connect.dst_ip == 0x7F000035 &&
+        if (ntohl(evt->data.connect.dst_ip) == 0x7F000035 &&
             evt->data.connect.dst_port == 53)
             return 84;
         if (strcmp(evt->comm, "systemd-resolve") == 0)

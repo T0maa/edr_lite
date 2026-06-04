@@ -43,7 +43,6 @@ typedef struct event_s {
     u32 gid;
     u32 type;
     char comm[EDR_MAX_COMM];
-    char parent_comm[EDR_MAX_COMM];
 
     union {
         struct {

@@ -208,7 +208,6 @@ void tracker_clear_pid_fd_path(tracker_t *tracker, uint32_t pid)
             tracker->fd_slots[i].fd = 0;
             tracker->fd_slots[i].used = false;
             tracker->fd_slots[i].path[0] = '\0';
-            return;
         }
     }
 }

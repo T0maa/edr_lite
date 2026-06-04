@@ -1,8 +1,10 @@
 #define _POSIX_C_SOURCE 200809L
+
 #include "../include/rules.h"
 #include <time.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 static void get_real_timestamp(uint64_t ts_ns, char *buf, size_t buf_size)
 {
@@ -51,8 +53,8 @@ void raise_alert(const char *alert_name, uint64_t ts_ns, int pid, int ppid,
 
 bool is_write_open_flags(int flags)
 {
-    if (((flags & 1) || (flags & 2)) &&
-        ((flags & 64) || (flags & 512)))
+    if (((flags & O_WRONLY) || (flags & O_RDWR)) &&
+        ((flags & O_CREAT) || (flags & O_TRUNC)))
         return true;
     return false;
 }
