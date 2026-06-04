@@ -261,7 +261,7 @@ int tp_renameat2(struct trace_event_raw_sys_enter *ctx)
     old_filename = (const char *)ctx->args[1];
     bpf_probe_read_user_str(e->data.renameat2.old_filename, sizeof(e->data.renameat2.old_filename), old_filename);
 
-    new_filename = (const char *)ctx->args[1];
+    new_filename = (const char *)ctx->args[3];
     bpf_probe_read_user_str(e->data.renameat2.new_filename, sizeof(e->data.renameat2.new_filename), new_filename);
 
     e->data.renameat2.flags = (u32)ctx->args[4];
