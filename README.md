@@ -307,14 +307,16 @@ The objective is to provide a clear technical demonstration of behavioral detect
 
 This project is a prototype and has several limitations.
 
-Limited syscall coverage
-No advanced process lineage reconstruction
-No distributed telemetry collection
-No remote alerting or SIEM integration
-No automatic noise filtering or whitelisting
+- Syscall coverage is limited to the most security-relevant operations
+- No advanced process lineage reconstruction beyond parent-child relationships
+- No distributed telemetry collection or remote agent support
+- No SIEM integration or remote alerting
+- Whitelisting is static and defined at compile time
+- Detection rules run on a 1-second polling interval, not in real-time
+- No IPv6 support, only IPv4 connections are monitored
+- The tracker uses fixed-size slot arrays — under very high event volume, slots may saturate
 
-The focus of the project is on demonstrating detection concepts rather than building a production-grade EDR.
-
+The focus of this project is on demonstrating detection concepts rather than building a production-grade EDR.
 ---
 
 ## Technologies Used
