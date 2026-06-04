@@ -282,12 +282,20 @@ chmod +x /tmp/payload.sh
 ```bash
 /tmp/payload.sh
 ```
+
+<img width="445" height="98" alt="img1" src="https://github.com/user-attachments/assets/862eefd9-5ae7-4b64-8acb-0e3ffe9a3dfd" />
+
+
+
 **Possible alerts triggered:**
 ```
 EXEC_FROM_TMP
 EXEC_AFTER_TMP_OPEN_WRITE
 EXEC_THEN_CONNECT
 ```
+<img width="590" height="621" alt="img2" src="https://github.com/user-attachments/assets/2410c514-250c-43d2-b801-a8ca2cc36add" />
+
+
 ---
 
 ## Project Goals
