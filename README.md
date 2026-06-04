@@ -40,7 +40,7 @@ Root privileges
 Install the required dependencies.
 
 On Debian or Ubuntu systems install:
-
+```
 clang
 llvm
 libbpf-dev
@@ -49,7 +49,7 @@ sqlite3
 libsqlite3-dev
 build-essential
 bpftool
-
+```
 Other distributions require equivalent packages.
 
 ---
@@ -271,23 +271,23 @@ Detects processes spawned by network utilities, which may indicate payload execu
 Payload execution from a temporary directory:
 
 **Create a payload:**
-
+```bash
 echo “nc 1.1.1.1 80” > /tmp/payload.sh
-
+```
 **Make it executable:**
-
+```bash
 chmod +x /tmp/payload.sh
-
+```
 **Execute the payload:**
-
+```bash
 /tmp/payload.sh
-
+```
 **Possible alerts triggered:**
-
+```
 EXEC_FROM_TMP
 EXEC_AFTER_TMP_OPEN_WRITE
 EXEC_THEN_CONNECT
-
+```
 ---
 
 ## Project Goals
@@ -321,11 +321,11 @@ The focus of this project is on demonstrating detection concepts rather than bui
 
 ## Technologies Used
 
-C
-eBPF and libbpf
-SQLite
-Linux kernel tracing
-Ring buffer communication
+* C
+* eBPF and libbpf
+* SQLite
+* Linux kernel tracing
+* Ring buffer communication
 
 ---
 
